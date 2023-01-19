@@ -17,13 +17,11 @@ $(document).ready(function () {
   $(".saveBtn").on("click", function(){
      var task = $(this).siblings("description").val();
      var time = $(this).parent().attr("id");
-
+    // stores the newly created task in the local storage
      localStorage.setItem(time, task);
-    // gets any tasks stored in the local storage
-    var getTask = function(){
-      var loadedTask =JSON.parse(localStorage.getItem("task"))
-    }
+     checkTime();
 
+    
   })
 
   
@@ -50,17 +48,38 @@ $(document).ready(function () {
         
       })
     }
-   
+  
     
     //
     // TODO: Add code to get any user input that was saved in localStorage and set
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
 
+// gets any tasks stored in the local storage and puts it into the proper div
+var getTasks = function(){
+  var loadedTasks = JSON.parse(localStorage.getItem("task"));
+  if(loadedTasks) {
+    task = loadedTasks
+
+    $.each(task, function(hour, task){
+      var hourDiv = $("#" + hour);
+      createTask(task, hourDiv)
+    })
+  }
+  checkTime();
+}
+var createTask = function(taskText, hourDiv){
+  var taskDiv = hourDiv.find(".task")
+  var taskP = $("<p>")
+      .addClass("description")
+      .text(taskText)
+      taskDiv.html(taskP);
+}
+ 
+  
+    getTasks();
+  });
 
   
-  
-    
-  });
 
   
