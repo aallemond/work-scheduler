@@ -2,7 +2,7 @@
 var today = dayjs();
 
 //Displays the current date in the header
-$('#currentDay').text(today.format('MMMM DD YYYY '));
+$('#currentDay').text(today.format('MMMM DD, YYYY '));
 
 
 
