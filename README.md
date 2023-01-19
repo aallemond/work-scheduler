@@ -16,7 +16,7 @@ N/A
 
 ## Usage
 
-Enter your tasks into the corresponding time slot and click the save button to the right to lock it in! Time slots are color coded according to time of day! Grey times have already passed, red is the current time, and green is future times.
+Enter your tasks into the corresponding time slot and click the save button to the right to lock it in so you can leave and revisit the page as you please! Time slots are color coded according to time of day! Grey times have already passed, red is the current time, and green is future times.
 
 
 ## Credits
