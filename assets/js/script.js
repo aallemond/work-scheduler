@@ -1,7 +1,9 @@
-var today = moment();
-var timeBlockEl = document.querySelector('.time-block');
 
-$('#currentDay').text(today.format('LLLL'));
+var today = dayjs();
+var timeBlockEl = document.querySelector('.time-block');
+//Displays the current date in the header
+$('#currentDay').text(today.format('MMMM DD YYYY '));
+
 
 
 // TODO: Add a listener for click events on the save button. This code should
@@ -11,12 +13,16 @@ $('#currentDay').text(today.format('LLLL'));
     // time-block containing the button that was clicked? How might the id be
     // useful when saving the description in local storage?
 
-$document.ready(function () {
+$(document).ready(function () {
   $(".saveBtn").on("click", function(){
-     var text = $(this). siblings("description").val();
+     var task = $(this).siblings("description").val();
      var time = $(this).parent().attr("id");
 
-     localStorage.setItem(time, text);
+     localStorage.setItem(time, task);
+    // gets any tasks stored in the local storage
+    var getTask = function(){
+      var loadedTask =JSON.parse(localStorage.getItem("task"))
+    }
 
   })
 
@@ -27,6 +33,23 @@ $document.ready(function () {
     // past, present, and future classes? How can Day.js be used to get the
     // current hour in 24-hour time?
     
+    var checkTime = function(){
+      var currentHour = dayjs().hour();
+      $(".time-block").each(function(){
+        var elementHour = parseInt($(this).attr("id"));
+        if (elementHour < currentHour){
+          $(this).removeClass(["present", "future"]).addClass("past");
+        }
+        else if (elementHour === currentHour){
+          $(this).removeClass(["past", "future"]).addClass("present");
+        }
+
+        else{
+          $(this).removeClass(["present", "past"]).addClass("future");
+        }
+        
+      })
+    }
    
     
     //
@@ -35,7 +58,9 @@ $document.ready(function () {
     // attribute of each time-block be used to do this?
 
 
-    // TODO: Add code to display the current date in the header of the page.
+  
   
     
   });
+
+  
