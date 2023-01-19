@@ -16,7 +16,8 @@ $(document).ready(function () {
   $(".saveBtn").on("click", function(){
      var task = $(this).siblings(".description").val();
      var time = $(this).parent().attr("id");
-    // stores the newly created task in the local storage
+    
+     // stores the newly created task in the local storage
      localStorage.setItem(time, task);
      checkTime();
 
@@ -33,7 +34,9 @@ $(document).ready(function () {
     var checkTime = function(){
       var currentHour = dayjs().hour();
       $(".time-block").each(function(){
-        var elementHour = parseInt($(this).attr("id"));
+        var elementHour = parseInt($(this).attr("id").split("-")[1]);
+        console.log (elementHour)
+        console.log(currentHour)
         if (elementHour < currentHour){
           $(this).removeClass(["present", "future"]).addClass("past");
         }
@@ -66,7 +69,7 @@ $('#hr16').val(localStorage.getItem('hour-16'))
 $('#hr17').val(localStorage.getItem('hour-17'))
     
     checkTime();
-    
+
   });
 
   
