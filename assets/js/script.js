@@ -5,7 +5,6 @@ var timeBlockEl = document.querySelector('.time-block');
 $('#currentDay').text(today.format('MMMM DD YYYY '));
 
 
-
 // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
@@ -15,7 +14,7 @@ $('#currentDay').text(today.format('MMMM DD YYYY '));
 
 $(document).ready(function () {
   $(".saveBtn").on("click", function(){
-     var task = $(this).siblings("description").val();
+     var task = $(this).siblings(".description").val();
      var time = $(this).parent().attr("id");
     // stores the newly created task in the local storage
      localStorage.setItem(time, task);
@@ -56,28 +55,18 @@ $(document).ready(function () {
     // attribute of each time-block be used to do this?
 
 // gets any tasks stored in the local storage and puts it into the proper div
-var getTasks = function(){
-  var loadedTasks = JSON.parse(localStorage.getItem("task"));
-  if(loadedTasks) {
-    task = loadedTasks
-
-    $.each(task, function(hour, task){
-      var hourDiv = $("#" + hour);
-      createTask(task, hourDiv)
-    })
-  }
-  checkTime();
-}
-var createTask = function(taskText, hourDiv){
-  var taskDiv = hourDiv.find(".task")
-  var taskP = $("<p>")
-      .addClass("description")
-      .text(taskText)
-      taskDiv.html(taskP);
-}
- 
-  
-    getTasks();
+$('#hr9').val(localStorage.getItem('hour-9'))
+$('#hr10').val(localStorage.getItem('hour-10'))
+$('#hr11').val(localStorage.getItem('hour-11'))
+$('#hr12').val(localStorage.getItem('hour-12'))
+$('#hr13').val(localStorage.getItem('hour-13'))
+$('#hr14').val(localStorage.getItem('hour-14'))
+$('#hr15').val(localStorage.getItem('hour-15'))
+$('#hr16').val(localStorage.getItem('hour-16'))
+$('#hr17').val(localStorage.getItem('hour-17'))
+    
+    checkTime();
+    
   });
 
   
