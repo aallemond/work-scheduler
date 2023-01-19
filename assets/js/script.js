@@ -1,6 +1,5 @@
 
 var today = dayjs();
-var timeBlockEl = document.querySelector('.time-block');
 
 //Displays the current date in the header
 $('#currentDay').text(today.format('MMMM DD YYYY '));
@@ -16,7 +15,7 @@ $(document).ready(function () {
     
     // Stores the newly created task in the local storage
      localStorage.setItem(time, task);
-     checkTime();
+     
 
     
   })
